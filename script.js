@@ -48,7 +48,7 @@ interestForm?.addEventListener('submit', (event) => {
     if (submitButton) {
       submitButton.disabled = false;
       submitButton.setAttribute('aria-busy', 'false');
-      submitButton.innerHTML = 'Save my place <i class="ph ph-arrow-up-right" aria-hidden="true"></i>';
+      submitButton.innerHTML = "Save my place";
     }
   }, 420);
 });
