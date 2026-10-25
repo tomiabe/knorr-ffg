@@ -1,30 +1,9 @@
-const body = document.body;
-const themeToggle = document.querySelector('[data-theme-toggle]');
 const menuToggle = document.querySelector('[data-menu-toggle]');
 const mobileMenu = document.querySelector('[data-mobile-menu]');
 const toast = document.querySelector('[data-toast]');
 const interestForm = document.querySelector('[data-interest-form]');
 const videoTriggers = document.querySelectorAll('[data-video-id]');
 const submitButton = interestForm?.querySelector('[data-submit-button]');
-
-const savedTheme = localStorage.getItem('knorr-theme');
-if (savedTheme === 'dark') {
-  body.classList.add('dark-mode');
-}
-
-function updateThemeButton() {
-  if (!themeToggle) return;
-  const isDark = body.classList.contains('dark-mode');
-  themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-  themeToggle.setAttribute('aria-pressed', String(isDark));
-  themeToggle.innerHTML = `<i class="ph ${isDark ? 'ph-sun' : 'ph-moon'}" aria-hidden="true"></i>`;
-}
-
-themeToggle?.addEventListener('click', () => {
-  body.classList.toggle('dark-mode');
-  localStorage.setItem('knorr-theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
-  updateThemeButton();
-});
 
 menuToggle?.addEventListener('click', () => {
   const isOpen = mobileMenu.classList.toggle('is-open');
@@ -41,8 +20,6 @@ mobileMenu?.querySelectorAll('a').forEach((link) => {
     if (menuToggle) menuToggle.innerHTML = '<i class="ph ph-list" aria-hidden="true"></i>';
   });
 });
-
-updateThemeButton();
 
 let toastTimer;
 function showToast(message) {
